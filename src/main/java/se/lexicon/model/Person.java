@@ -60,7 +60,6 @@ public class Person {
         if (book.getBorrower().getId() == getId()) {
             book.setBorrower(null);
         }
-        System.out.println("Cant do that m8");
     }
 
     public String getPersonInformation() {
