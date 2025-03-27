@@ -51,10 +51,14 @@ public class Person {
     }
 
     public void returnBook(Book book) {
-        book.setBorrower(null);
+        if (book.getBorrower().getId() == getId()) {
+            book.setBorrower(null);
+        }
+        System.out.println("Cant do that m8");
     }
 
     public String getPersonInformation() {
-        return "Text to return ";
+
+        return "Name: " + getFirstName() + getLastName();
     }
 }

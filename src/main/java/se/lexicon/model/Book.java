@@ -55,11 +55,15 @@ public class Book {
         return this.available;
     }
 
+    public String ifBookViable() {
+        return isAvailable() ? "Can be loaned " : "Loaned by " + getBorrower().getFirstName() + " " + getBorrower().getLastName();
+    }
+
     public void setAvailable(boolean available) {
         this.available = available;
     }
 
     public String getBookInformation() {
-        return "Text to return";
+        return "\nBook Name: " + getTitle() + "\nBook Author: " + getAuthor() + "\nBook Status: " + ifBookViable();
     }
 }
