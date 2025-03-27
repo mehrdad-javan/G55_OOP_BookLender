@@ -6,5 +6,15 @@ package se.lexicon.model;
  * to manage book-related information and operations.
  */
 public class Book {
-    // todo: needs completion
+    private int id;
+    private String title;
+    private String author;
+    private boolean available;
+
+
+    public String getBookInformation() {
+        return "Text to return";
+    }
+
+
 }
