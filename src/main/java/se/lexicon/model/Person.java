@@ -5,4 +5,15 @@ package se.lexicon.model;
  */
 public class Person {
     // todo: needs completion
+
+    private int id;
+    private String name;
+    private String contactDetails;
+}
+
+// Constructor
+public Person(int id, String name, String contactDetails) {
+    this.id = id;
+    this.name = name;
+    this.contactDetails = contactDetails;
 }
