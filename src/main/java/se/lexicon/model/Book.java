@@ -55,10 +55,6 @@ public class Book {
         return this.available;
     }
 
-    public String printBookViableString() {
-        return isAvailable() ? "Can be loaned " : "Loaned by " + getBorrower().getFirstName() + " " + getBorrower().getLastName();
-    }
-
     public void setAvailable(boolean available) {
         this.available = available;
     }
