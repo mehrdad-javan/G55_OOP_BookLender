@@ -20,7 +20,7 @@ public class App {
         gentritPersoni.returnBook(gentritsBook);
         gentritPersoni.loanBook(testisBook);
 
-        System.out.println("Book has been returned should be true : " + gentritsBook.isAvailable());
+        System.out.println("Book Gentrit has been returned should be true : " + gentritsBook.isAvailable());
 
 
         System.out.println(testisBook.isAvailable());

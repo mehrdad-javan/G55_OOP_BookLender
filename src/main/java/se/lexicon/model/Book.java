@@ -48,9 +48,15 @@ public class Book {
 
     public boolean isAvailable() {
         if (getBorrower() == null) {
-            return true;
+            setAvailable(true);
+            return this.available;
         }
-        return false;
+        this.setAvailable(false);
+        return this.available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public String getBookInformation() {
