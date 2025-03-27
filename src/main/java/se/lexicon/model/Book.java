@@ -35,6 +35,9 @@ public class Book {
     }
 
     public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty())
+            throw new IllegalArgumentException("Title cant be null or empty");
+
         this.title = title;
     }
 
@@ -43,6 +46,9 @@ public class Book {
     }
 
     public void setAuthor(String author) {
+        if (author == null || author.trim().isEmpty())
+            throw new IllegalArgumentException("Author cant be null or empty");
+
         this.author = author;
     }
 
@@ -61,8 +67,7 @@ public class Book {
 
     public String getBookInformation() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Book Name: ").append(getTitle()).append("\n")
-                .append("Book Author: ").append(getAuthor()).append("\n");
+        stringBuilder.append("Book Name: ").append(getTitle()).append("\n").append("Book Author: ").append(getAuthor()).append("\n");
 
         String bookAvailability = isAvailable() ? "Can be loaned " : "Loaned by: " + getBorrower().getFirstName() + " " + getBorrower().getLastName();
 

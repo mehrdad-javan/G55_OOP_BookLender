@@ -26,6 +26,9 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
+        if (lastName == null || lastName.trim().isEmpty())
+            throw new IllegalArgumentException("Can't be null or empty");
+
         this.lastName = lastName;
     }
 
@@ -34,6 +37,9 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
+        if (firstName == null || firstName.trim().isEmpty())
+            throw new IllegalArgumentException("Cant be null or empty");
+
         this.firstName = firstName;
     }
 
@@ -45,7 +51,7 @@ public class Person {
         if (book.isAvailable()) {
             book.setBorrower(this);
         } else {
-            System.out.println("Cant loan book");
+            System.out.println("Can't loan book");
         }
 
     }
@@ -58,7 +64,6 @@ public class Person {
     }
 
     public String getPersonInformation() {
-
         return "Name: " + getFirstName() + getLastName();
     }
 }

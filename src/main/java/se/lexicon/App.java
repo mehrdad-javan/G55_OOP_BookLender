@@ -14,9 +14,10 @@ public class App {
         testPerson.loanBook(testisBook);
         gentritPersoni.loanBook(gentritsBook);
 
-
         System.out.println(testisBook.getBookInformation());
 
+        Book setburrowTest = new Book("Burrow", "Burrowso");
+        System.out.println(setburrowTest.getBorrower());
 
         // Initialize and display Book & Person instances
         // Simulate borrowing a book
