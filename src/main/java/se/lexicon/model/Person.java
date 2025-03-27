@@ -38,17 +38,18 @@ public class Person {
     }
 
     private static int getNextId() {
-        sequencer += 1;
-
-        return sequencer;
+        return ++sequencer;
     }
 
     public void loanBook(Book book) {
+        if (book.isAvailable()) {
+            book.setBorrower(this);
+        }
 
     }
 
     public void returnBook(Book book) {
-
+        book.setBorrower(null);
     }
 
     public String getPersonInformation() {
