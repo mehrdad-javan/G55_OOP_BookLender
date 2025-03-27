@@ -55,7 +55,7 @@ public class Book {
         return this.available;
     }
 
-    public String ifBookViable() {
+    public String printBookViableString() {
         return isAvailable() ? "Can be loaned " : "Loaned by " + getBorrower().getFirstName() + " " + getBorrower().getLastName();
     }
 
@@ -64,6 +64,14 @@ public class Book {
     }
 
     public String getBookInformation() {
-        return "\nBook Name: " + getTitle() + "\nBook Author: " + getAuthor() + "\nBook Status: " + ifBookViable();
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Book Name: ").append(getTitle()).append("\n")
+                .append("Book Author: ").append(getAuthor()).append("\n");
+
+        String bookAvailability = isAvailable() ? "Can be loaned " : "Loaned by: " + getBorrower().getFirstName() + " " + getBorrower().getLastName();
+
+        stringBuilder.append(bookAvailability);
+
+        return stringBuilder.toString();
     }
 }
