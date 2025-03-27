@@ -28,7 +28,7 @@ public class Book {
 
     public void setBorrower(Person borrower) {
         if (borrower == null) {
-            setAvailable(true);
+            setAvailable(isAvailable());
         } else {
             setAvailable(false);
             this.borrower = borrower;
@@ -53,9 +53,10 @@ public class Book {
     }
 
     public boolean isAvailable() {
-        //Get borrower
-
-        return available;
+        if (getBorrower() == null) {
+            return true;
+        }
+        return false;
     }
 
     public void setAvailable(boolean available) {
