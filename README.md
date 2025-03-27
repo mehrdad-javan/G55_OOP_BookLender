@@ -4,7 +4,7 @@ This is a small OOP-based project simulating a **book lending system**, where ea
 
 ### 👥 Group Workshop
 
-This project is done as a **group workshop**, but each student must **fork the repository individually** to their own GitHub account using the **link provided by your teacher**.
+This project is a **group workshop**, but each student must **fork the repository individually** to their own GitHub account using the **link provided by your teacher**.
 
 ### 🔄 Getting Started
 
