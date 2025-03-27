@@ -44,7 +44,7 @@ public class Person {
     public void loanBook(Book book) {
         if (book.isAvailable()) {
             book.setBorrower(this);
-        }else {
+        } else {
             System.out.println("Cant loan book");
         }
 
