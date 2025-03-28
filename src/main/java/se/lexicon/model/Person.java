@@ -9,6 +9,7 @@ public class Person {
     private final int id;
     private String firstName;
     private String lastName;
+    private Book[] books;
 
 
     public Person(String firstName, String lastName) {
@@ -26,8 +27,7 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        if (lastName == null || lastName.trim().isEmpty())
-            throw new IllegalArgumentException("Can't be null or empty");
+        if (lastName == null || lastName.trim().isEmpty()) throw new IllegalArgumentException("Can't be null or empty");
 
         this.lastName = lastName;
     }
