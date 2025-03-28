@@ -8,7 +8,7 @@ import java.util.UUID;
  * to manage book-related information and operations.
  */
 public class Book {
-    private String id;
+    private final String id;
     private String title;
     private String author;
     private boolean available;
@@ -34,6 +34,10 @@ public class Book {
     }
 
     public void setBorrower(Person borrower) {
+        if (borrower == null) {
+            setAvailable(true);
+        }
+        setAvailable(false);
         this.borrower = borrower;
     }
 
@@ -42,8 +46,7 @@ public class Book {
     }
 
     public void setTitle(String title) {
-        if (title == null || title.trim().isEmpty())
-            throw new IllegalArgumentException("Title cant be null or empty");
+        if (title == null || title.trim().isEmpty()) throw new IllegalArgumentException("Title cant be null or empty");
 
         this.title = title;
     }
@@ -60,12 +63,7 @@ public class Book {
     }
 
     public boolean isAvailable() {
-        if (getBorrower() == null) {
-            setAvailable(true);
-            return this.available;
-        }
-        this.setAvailable(false);
-        return this.available;
+        return getBorrower() == null;
     }
 
     public void setAvailable(boolean available) {

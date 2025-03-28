@@ -1,5 +1,7 @@
 package se.lexicon.model;
 
+import java.util.SortedMap;
+
 /**
  * This class represents a Person model with properties and methods
  * to manage personal details and interactions with the library system.
@@ -9,7 +11,7 @@ public class Person {
     private final int id;
     private String firstName;
     private String lastName;
-    private Book[] books;
+//    private Book[] books;
 
 
     public Person(String firstName, String lastName) {
@@ -51,14 +53,15 @@ public class Person {
         if (book.isAvailable()) {
             book.setBorrower(this);
         } else {
-            System.out.println("Can't loan book");
+            System.out.println("Book not Available");
         }
-
     }
 
     public void returnBook(Book book) {
         if (book.getBorrower().getId() == getId()) {
             book.setBorrower(null);
+        } else {
+            System.out.println("Cant return a book that don't belong 2 you ");
         }
     }
 
