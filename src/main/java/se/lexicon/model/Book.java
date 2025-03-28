@@ -34,10 +34,7 @@ public class Book {
     }
 
     public void setBorrower(Person borrower) {
-        if (borrower == null) {
-            setAvailable(true);
-        }
-        setAvailable(false);
+        setAvailable(borrower == null);
         this.borrower = borrower;
     }
 

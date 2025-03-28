@@ -51,6 +51,7 @@ public class Person {
 
     public void loanBook(Book book) {
         if (book.isAvailable()) {
+            System.out.println("Book has been loaned.");
             book.setBorrower(this);
         } else {
             System.out.println("Book not Available");
@@ -58,10 +59,13 @@ public class Person {
     }
 
     public void returnBook(Book book) {
-        if (book.getBorrower().getId() == getId()) {
-            book.setBorrower(null);
+        if (book.getBorrower() == null) {
+            System.out.println("This book hasn't been borrowed by anyone.");
+        } else if (book.getBorrower().getId() != getId()) {
+            System.out.println("Its not your book to return");
         } else {
-            System.out.println("Cant return a book that don't belong 2 you ");
+            book.setBorrower(null);
+            System.out.println("Book successfully returned.");
         }
     }
 
