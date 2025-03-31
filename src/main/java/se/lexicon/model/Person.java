@@ -1,19 +1,82 @@
 package se.lexicon.model;
+
+import java.util.Arrays;
 /**
  * This class represents a Person model with properties and methods
  * to manage personal details and interactions with the library system.
  */
 public class Person {
-    // todo: needs completion
 
-    private int id;
-    private String name;
-    private String contactDetails;
-}
+    private static int sequencer = 0;
 
-// Constructor
-public Person(int id, String name, String contactDetails) {
-    this.id = id;
-    this.name = name;
-    this.contactDetails = contactDetails;
+    private final int id;
+    private String firstName;
+    private String lastName;
+    private Book[] borrowedBooks;
+
+
+    public Person(String firstName, String lastName) {
+        this.id = getNextId();
+        this.borrowedBooks = new Book[0];
+        setFirstName(firstName);
+        setLastName(lastName);
+    }
+
+// Getters and Setters
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        if (firstName == null) throw new IllegalArgumentException("FirstName cannot be empty/null");
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        if (lastName == null) throw new IllegalArgumentException("LastName cannot be empty/null");
+        this.lastName = lastName;
+    }
+
+    public Book[] getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    private static int getNextId() {
+        return ++sequencer;
+    }
+
+    public void loanBook(Book book) {
+        if (book == null) throw new IllegalArgumentException("Book cannot be empty/null");
+        if (!book.isAvailable()) throw new IllegalArgumentException("Book is not available");
+
+        book.setBorrower(this);
+        Book[] newArray = Arrays.copyOf(borrowedBooks, borrowedBooks.length + 1);
+        newArray[newArray.length - 1] = book;
+        borrowedBooks = newArray;
+    }
+
+    public void returnBook(Book book) {
+        if (book == null) throw new IllegalArgumentException("Book cannot be empty/null");
+        Book[] newArray = new Book[borrowedBooks.length - 1];
+        int counter = 0;
+        for (Book elementArray : borrowedBooks) {
+            if (elementArray.getId().equals(book.getId())) {
+                book.setBorrower(null);
+            }
+            newArray[counter++] = elementArray;
+        }
+        borrowedBooks = newArray;
+    }
+    public String getPersonInformation() {
+        return "Person{ id=" + id + ", firstName='" + firstName + ", lastName='" + lastName + ",number of borrowedBooks=" + borrowedBooks.length + '}';
+    }
 }
