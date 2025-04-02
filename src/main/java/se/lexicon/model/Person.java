@@ -1,5 +1,7 @@
 package se.lexicon.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedMap;
 
 /**
@@ -11,13 +13,17 @@ public class Person {
     private final int id;
     private String firstName;
     private String lastName;
-//    private Book[] books;
-
+    private final List<Book> loanedBooks;
 
     public Person(String firstName, String lastName) {
         this.id = getNextId();
         setFirstName(firstName);
         setLastName(lastName);
+        this.loanedBooks = getLoanedBooks() != null ? getLoanedBooks() : new ArrayList<>();
+    }
+
+    public List<Book> getLoanedBooks() {
+        return loanedBooks;
     }
 
     public int getId() {
@@ -53,9 +59,13 @@ public class Person {
         if (book.isAvailable()) {
             System.out.println("Book has been loaned.");
             book.setBorrower(this);
-        } else {
-            System.out.println("Book not Available");
         }
+        if (getLoanedBooks().contains(book)) {
+            System.out.println("You have already this book loaned.");
+        } else {
+            getLoanedBooks().add(book);
+        }
+        System.out.println("Cant loan Book");
     }
 
     public void returnBook(Book book) {
@@ -64,8 +74,15 @@ public class Person {
         } else if (book.getBorrower().getId() != getId()) {
             System.out.println("Its not your book to return");
         } else {
+            getLoanedBooks().remove(book);
             book.setBorrower(null);
             System.out.println("Book successfully returned.");
+        }
+    }
+
+    public void printAllLoanedBooks() {
+        for (Book books : getLoanedBooks()) {
+            System.out.println(books.getBookInformation());
         }
     }
 

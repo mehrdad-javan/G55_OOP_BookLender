@@ -3,6 +3,8 @@ package se.lexicon;
 import se.lexicon.model.Book;
 import se.lexicon.model.Person;
 
+import java.util.ArrayList;
+
 public class App {
     public static void main(String[] args) {
 
@@ -10,6 +12,8 @@ public class App {
         //Persons
         Person gentritPerson = new Person("Gentrit", "Hoti");
         Person testPerson = new Person("Test", "Testison");
+
+
 
         //Books
         Book bookOne = new Book(" The Time Machine by H. G. Wells", "H.G.Wells");
@@ -26,32 +30,35 @@ public class App {
         System.out.println(bookOne.getBookInformation());
         System.out.println("---------------------------------------");
 
+//        gentritPerson.loanBook(bookOne);
+
+        gentritPerson.printAllLoanedBooks();
 
         // Simulate returning a book
-        System.out.println("---------------------------------------");
-
-        System.out.println("         Returning Book          ");
-        System.out.println("Return function runs...");
-        gentritPerson.returnBook(bookOne);
-        System.out.println(bookOne.getBookInformation());
-        System.out.println("---------------------------------------");
-
-
-        //Simulate other person Loaning after returned
-        System.out.println("---------------------------------------");
-        System.out.println("         Other person borrows          ");
-        System.out.println("Loan function runs...");
-        testPerson.loanBook(bookOne);
-        System.out.println(bookOne.getBookInformation());
-        System.out.println("----------------------------------------");
-
-        //Simulate other person loaning the same book CAN't
-        System.out.println("---------------------------------------");
-        System.out.println("         Other person borrows          ");
-        System.out.println("Loan function runs...");
-        gentritPerson.loanBook(bookOne);
-        System.out.println(bookOne.getBookInformation());
-        System.out.println("----------------------------------------");
+//        System.out.println("---------------------------------------");
+//
+//        System.out.println("         Returning Book          ");
+//        System.out.println("Return function runs...");
+//        gentritPerson.returnBook(bookOne);
+//        System.out.println(bookOne.getBookInformation());
+//        System.out.println("---------------------------------------");
+//
+//
+//        //Simulate other person Loaning after returned
+//        System.out.println("---------------------------------------");
+//        System.out.println("         Other person borrows          ");
+//        System.out.println("Loan function runs...");
+//        testPerson.loanBook(bookOne);
+//        System.out.println(bookOne.getBookInformation());
+//        System.out.println("----------------------------------------");
+//
+//        //Simulate other person loaning the same book CAN't
+//        System.out.println("---------------------------------------");
+//        System.out.println("         Other person borrows          ");
+//        System.out.println("Loan function runs...");
+//        gentritPerson.loanBook(bookOne);
+//        System.out.println(bookOne.getBookInformation());
+//        System.out.println("----------------------------------------");
 
     }
 
